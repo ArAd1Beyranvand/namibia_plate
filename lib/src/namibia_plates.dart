@@ -5,6 +5,7 @@ import 'package:plate_core/plate_core.dart';
 
 import 'namibia_alphabets.dart';
 import 'namibia_country.dart';
+import 'namibia_regions.dart';
 
 /// Where the ink sits, in plate coordinates. Measured off the article's six
 /// photographs by normalising each plate's field rectangle to 520×110.
@@ -217,6 +218,7 @@ abstract final class NamibiaPlates {
         ...groups,
         PlateTextGroup([regionSlot], key: 'region', prefix: ' '),
       ],
+      resolveRegion: NamibiaRegions.captionOf,
     );
   }
 
