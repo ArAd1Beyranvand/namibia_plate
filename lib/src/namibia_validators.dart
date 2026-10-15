@@ -54,7 +54,11 @@ PlateValidation? _incomplete(PlateEntry entry) {
   for (final g in entry.spec.textGroups) {
     final key = g.key;
     if (key == null) continue;
-    if (entry.group(key).length != g.indices.length) {
+    final int want = g.indices.fold(
+      0,
+      (n, i) => n + entry.spec.slots[i].length,
+    );
+    if (entry.group(key).length != want) {
       return PlateValidation.invalid('The $key is incomplete.');
     }
   }

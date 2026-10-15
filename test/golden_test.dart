@@ -18,17 +18,17 @@ void main() {
     await loader.load();
   });
 
-  List<String?> v(String s) => s.split('').toList();
+  List<String?> v(String s) => s.split('|');
 
   final cases = <(String, PlateSpec, PlateTheme, String)>[
-    ('windhoek', NamibiaPlates.windhoek, NamibiaThemes.standard, '108053W'),
-    ('six_two', NamibiaPlates.sixTwoLetter, NamibiaThemes.standard, '123456WB'),
-    ('five', NamibiaPlates.fiveDigit, NamibiaThemes.standard, '12181S'),
+    ('windhoek', NamibiaPlates.windhoek, NamibiaThemes.standard, '108|053|W'),
+    ('six_two', NamibiaPlates.sixTwoLetter, NamibiaThemes.standard, '123|456|WB'),
+    ('five', NamibiaPlates.fiveDigit, NamibiaThemes.standard, '12181|S'),
     (
       'four_two',
       NamibiaPlates.fourDigitTwoLetter,
       NamibiaThemes.standard,
-      '1234KM',
+      '1234|KM',
     ),
     (
       'personalised_6',
@@ -42,7 +42,7 @@ void main() {
       NamibiaThemes.personalised,
       'NAMIB24',
     ),
-    ('diplomatic', NamibiaPlates.diplomatic, NamibiaThemes.diplomatic, '01302'),
+    ('diplomatic', NamibiaPlates.diplomatic, NamibiaThemes.diplomatic, '013|02'),
     ('grn', NamibiaPlates.grn, NamibiaThemes.government, '32872'),
     ('police', NamibiaPlates.police, NamibiaThemes.government, '8006'),
     ('nam1', NamibiaPlates.nam1, NamibiaThemes.government, '0001'),

@@ -5,25 +5,25 @@ import 'package:plate_core/plate_core.dart';
 void main() {
   PlateEntry e(PlateSpec s, String v) => PlateEntry(
     spec: s,
-    values: v.split('').map((c) => c == '_' ? null : c).toList(),
+    values: v.split('|').map((c) => c.isEmpty ? null : c).toList(),
   );
 
   test('standard: known town valid, unknown flagged, quiet until town', () {
     const v = NamibiaPlateValidator();
-    expect(v.validate(e(NamibiaPlates.windhoek, '108053W')).isValid, isTrue);
+    expect(v.validate(e(NamibiaPlates.windhoek, '108|053|W')).isValid, isTrue);
     expect(
-      v.validate(e(NamibiaPlates.sixTwoLetter, '123456WB')).isValid,
+      v.validate(e(NamibiaPlates.sixTwoLetter, '123|456|WB')).isValid,
       isTrue,
     );
-    expect(v.validate(e(NamibiaPlates.windhoek, '108053Z')).isValid, isFalse);
-    expect(v.validate(e(NamibiaPlates.windhoek, '10805__')).isValid, isTrue);
-    expect(v.validate(e(NamibiaPlates.windhoek, '10805_W')).isValid, isFalse);
+    expect(v.validate(e(NamibiaPlates.windhoek, '108|053|Z')).isValid, isFalse);
+    expect(v.validate(e(NamibiaPlates.windhoek, '108|05|')).isValid, isTrue);
+    expect(v.validate(e(NamibiaPlates.windhoek, '108|05|W')).isValid, isFalse);
   });
 
   test('complete validator', () {
     const v = NamibiaCompleteValidator();
     expect(v.validate(e(NamibiaPlates.grn, '32872')).isValid, isTrue);
-    expect(v.validate(e(NamibiaPlates.grn, '3287_')).isValid, isFalse);
+    expect(v.validate(e(NamibiaPlates.grn, '3287')).isValid, isFalse);
   });
 
   test('every builder form passes debugValidateSpec', () {
