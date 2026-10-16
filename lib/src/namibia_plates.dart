@@ -113,11 +113,10 @@ abstract final class NamibiaPlates {
     double centre, {
     double glyphHeight = _Layout.rowHeight,
   }) {
-    final half = [
+    final half = min(
       32.0 * text.length + 8,
-      centre,
-      _Layout.width - centre,
-    ].reduce((a, b) => a < b ? a : b);
+      min(centre, _Layout.width - centre),
+    );
     return PlateLabel(
       text: text,
       box: PlateBox(centre - half, _Layout.rowTop, 2 * half, _Layout.rowHeight),

@@ -1,5 +1,3 @@
-import 'package:plate_core/plate_core.dart';
-
 /// Locates a Namibian plate from its trailing town code.
 ///
 /// Source: the "Town codes" list of
@@ -55,7 +53,6 @@ abstract final class NamibiaRegions {
   /// The town of [code], or null when empty or unlisted.
   static String? lookup(String code) => _towns[code.toUpperCase()];
 
-  /// A [PlateLabelResolver] for [PlateSpec.resolveRegion].
   static String? captionOf(String Function(String key) group) =>
       lookup(group('region'));
 }

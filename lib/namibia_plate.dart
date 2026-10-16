@@ -8,5 +8,5 @@ export 'src/namibia_colors.dart';
 export 'src/namibia_country.dart';
 export 'src/namibia_plates.dart';
 export 'src/namibia_themes.dart';
-export 'src/namibia_validators.dart';
 export 'src/namibia_regions.dart';
+export 'src/namibia_validators.dart';
