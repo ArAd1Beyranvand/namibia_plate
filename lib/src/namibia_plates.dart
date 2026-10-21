@@ -7,15 +7,11 @@ import 'namibia_alphabets.dart';
 import 'namibia_country.dart';
 import 'namibia_regions.dart';
 
-/// Where the ink sits, in plate coordinates. Measured off the article's six
-/// photographs by normalising each plate's field rectangle to 520×110.
+/// Where the ink sits, in plate coordinates, measured off the article's
+/// photographs normalised to 520x110. Only the standard plate has a documented
+/// size; the other designs share its canvas, scaled along each axis.
 ///
-/// 520×110 is documented for the standard plate only; the other designs have
-/// no size in the article and are laid out on the same canvas. The
-/// photographs themselves are 3.6–4.4 wide-to-high, not 4.73: x and y are
-/// each scaled to the canvas, so the layout is proportional along each axis.
-///
-/// Reference caps are ~73–79 of the 110 height. `glyphStyle` paints ink at
+/// Reference caps are ~73-79 of the 110 height. `glyphStyle` paints ink at
 /// ~0.53 of the box, so matching would need a ~145 box; the rows fill the
 /// plate (106) and the ink comes out at ~75% of the reference.
 abstract final class _Layout {
