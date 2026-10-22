@@ -45,19 +45,14 @@ class NamibiaCompleteValidator extends PlateValidator {
 
   @override
   PlateValidation validate(PlateEntry entry) =>
-      restrictionVerdict(entry) ??
-      _incomplete(entry) ??
-      const PlateValidation.valid();
+      restrictionVerdict(entry) ?? _incomplete(entry) ?? const PlateValidation.valid();
 }
 
 PlateValidation? _incomplete(PlateEntry entry) {
   for (final g in entry.spec.textGroups) {
     final key = g.key;
     if (key == null) continue;
-    final int want = g.indices.fold(
-      0,
-      (n, i) => n + entry.spec.slots[i].length,
-    );
+    final int want = g.indices.fold(0, (n, i) => n + entry.spec.slots[i].length);
     if (entry.group(key).length != want) {
       return PlateValidation.invalid('The $key is incomplete.');
     }

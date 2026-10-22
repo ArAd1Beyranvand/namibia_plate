@@ -53,6 +53,5 @@ abstract final class NamibiaRegions {
   /// The town of [code], or null when empty or unlisted.
   static String? lookup(String code) => _towns[code.toUpperCase()];
 
-  static String? captionOf(String Function(String key) group) =>
-      lookup(group('region'));
+  static String? captionOf(String Function(String key) group) => lookup(group('region'));
 }

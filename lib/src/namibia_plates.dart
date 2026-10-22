@@ -89,10 +89,7 @@ abstract final class _Layout {
   static const double governmentDigitsRight = 505.5;
   static const double governmentPitch = 55;
 
-  static const PlatePanel none = PlatePanel(
-    box: PlateBox(0, 0, 0, 0),
-    padding: EdgeInsets.zero,
-  );
+  static const PlatePanel none = PlatePanel(box: PlateBox(0, 0, 0, 0), padding: EdgeInsets.zero);
 }
 
 /// The current designs. Colour lives on `NamibiaThemes`.
@@ -104,15 +101,8 @@ abstract final class NamibiaPlates {
   /// A label centred on [centre]. Text wider than its box starts at the box's
   /// left and spills right, so the box is made wider than the ink (DejaVu
   /// Bold caps reach ~64 at this height) as far as the plate edge allows.
-  static PlateLabel _label(
-    String text,
-    double centre, {
-    double glyphHeight = _Layout.rowHeight,
-  }) {
-    final half = min(
-      32.0 * text.length + 8,
-      min(centre, _Layout.width - centre),
-    );
+  static PlateLabel _label(String text, double centre, {double glyphHeight = _Layout.rowHeight}) {
+    final half = min(32.0 * text.length + 8, min(centre, _Layout.width - centre));
     return PlateLabel(
       text: text,
       box: PlateBox(centre - half, _Layout.rowTop, 2 * half, _Layout.rowHeight),
@@ -121,12 +111,7 @@ abstract final class NamibiaPlates {
   }
 
   /// [count] cells between [left] and [right], as one slot.
-  static PlateSlot _run(
-    PlateAlphabet alphabet,
-    int count,
-    double left,
-    double right,
-  ) => PlateSlot(
+  static PlateSlot _run(PlateAlphabet alphabet, int count, double left, double right) => PlateSlot(
     alphabet: alphabet,
     box: PlateBox(left, _Layout.rowTop, right - left, _Layout.rowHeight),
     length: count,
@@ -141,9 +126,7 @@ abstract final class NamibiaPlates {
   /// number meets a two-letter code. Only the six-and-one and five-and-one
   /// forms are photographed; the others follow the same rule.
   static PlateSpec standard({required int digits, int regionLetters = 1}) {
-    assert(
-      digits >= 1 && digits <= 6 && regionLetters >= 1 && regionLetters <= 2,
-    );
+    assert(digits >= 1 && digits <= 6 && regionLetters >= 1 && regionLetters <= 2);
     final regionLeft =
         _Layout.regionLastCentre -
         (regionLetters - 1) * _Layout.regionCell -
@@ -169,12 +152,7 @@ abstract final class NamibiaPlates {
       labels.add(
         PlateLabel(
           text: '-',
-          box: PlateBox(
-            mid + dash / 2 - 15,
-            _Layout.rowTop,
-            30,
-            _Layout.rowHeight,
-          ),
+          box: PlateBox(mid + dash / 2 - 15, _Layout.rowTop, 30, _Layout.rowHeight),
           glyphHeight: _Layout.rowHeight,
         ),
       );
@@ -184,9 +162,7 @@ abstract final class NamibiaPlates {
       ];
     } else {
       regionSlot = 1;
-      serial = [
-        _run(NamibiaAlphabets.digits, digits, start, start + pitch * digits),
-      ];
+      serial = [_run(NamibiaAlphabets.digits, digits, start, start + pitch * digits)];
       groups = [
         const PlateTextGroup([0], key: 'serial', prefix: 'N '),
       ];
@@ -232,14 +208,7 @@ abstract final class NamibiaPlates {
       canvasWidth: _Layout.width,
       canvasHeight: _Layout.height,
       panel: _Layout.flag,
-      slots: [
-        _run(
-          NamibiaAlphabets.personalised,
-          length,
-          _Layout.personalLeft,
-          right,
-        ),
-      ],
+      slots: [_run(NamibiaAlphabets.personalised, length, _Layout.personalLeft, right)],
       labels: [_label('NA', _Layout.naCentre, glyphHeight: _Layout.naGlyph)],
       textGroups: const [
         PlateTextGroup([0], key: 'text'),
@@ -258,23 +227,10 @@ abstract final class NamibiaPlates {
     panel: _Layout.none,
     noPanel: true,
     slots: [
-      _run(
-        NamibiaAlphabets.digits,
-        3,
-        _Layout.missionLeft,
-        _Layout.missionRight,
-      ),
-      _run(
-        NamibiaAlphabets.digits,
-        2,
-        _Layout.diplomaticSerialLeft,
-        _Layout.diplomaticSerialRight,
-      ),
+      _run(NamibiaAlphabets.digits, 3, _Layout.missionLeft, _Layout.missionRight),
+      _run(NamibiaAlphabets.digits, 2, _Layout.diplomaticSerialLeft, _Layout.diplomaticSerialRight),
     ],
-    labels: [
-      _label('CD', _Layout.cdCentre),
-      _label('N', _Layout.diplomaticNationCentre),
-    ],
+    labels: [_label('CD', _Layout.cdCentre), _label('N', _Layout.diplomaticNationCentre)],
     textGroups: const [
       PlateTextGroup([0], key: 'mission'),
       PlateTextGroup([1], key: 'serial', prefix: ' CD '),
@@ -301,12 +257,7 @@ abstract final class NamibiaPlates {
       panel: _Layout.none,
       noPanel: true,
       slots: [
-        _run(
-          NamibiaAlphabets.digits,
-          digits,
-          right - _Layout.governmentPitch * digits,
-          right,
-        ),
+        _run(NamibiaAlphabets.digits, digits, right - _Layout.governmentPitch * digits, right),
       ],
       labels: [
         _label(
@@ -331,10 +282,7 @@ abstract final class NamibiaPlates {
   static final PlateSpec fiveDigit = standard(digits: 5);
 
   /// `N 1234 KM`.
-  static final PlateSpec fourDigitTwoLetter = standard(
-    digits: 4,
-    regionLetters: 2,
-  );
+  static final PlateSpec fourDigitTwoLetter = standard(digits: 4, regionLetters: 2);
 
   static final PlateSpec personalisedSix = personalised(length: 6);
   static final PlateSpec personalisedSeven = personalised();

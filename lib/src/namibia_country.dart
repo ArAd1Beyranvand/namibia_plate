@@ -9,11 +9,7 @@ import 'namibia_colors.dart';
 abstract final class NamibiaCountry {
   static const PlateDrawing _flag = PlateDrawing(90, 60, <PlateShape>[
     PlateRectShape(0, 0, 90, 60, Color(0xFF009A44)),
-    PlatePolygonShape(<Offset>[
-      Offset(0, 60),
-      Offset(0, 0),
-      Offset(90, 0),
-    ], Color(0xFF002F6C)),
+    PlatePolygonShape(<Offset>[Offset(0, 60), Offset(0, 0), Offset(90, 0)], Color(0xFF002F6C)),
     PlatePolygonShape(<Offset>[
       Offset(0, 47.981),
       Offset(71.971, 0),
@@ -30,14 +26,7 @@ abstract final class NamibiaCountry {
       Offset(13.521, 60),
       Offset(0, 60),
     ], Color(0xFFC8102E)),
-    PlateStarShape(
-      18,
-      16.341,
-      10,
-      Color(0xFFFFCD00),
-      points: 12,
-      innerRatio: 0.6,
-    ),
+    PlateStarShape(18, 16.341, 10, Color(0xFFFFCD00), points: 12, innerRatio: 0.6),
     PlateRingShape(18, 16.341, 5.5, 1, Color(0xFF002F6C)),
   ]);
 
