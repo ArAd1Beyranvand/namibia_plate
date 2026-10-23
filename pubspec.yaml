@@ -1,7 +1,7 @@
 name: namibia_plate
 description: "Namibia's licence plates for the plate_core library — the yellow standard series, personalised, diplomatic and government plates."
 version: 0.1.0
-publish_to: none
+repository: https://github.com/ArAd1Beyranvand/namibia_plate
 resolution: workspace
 
 environment:
