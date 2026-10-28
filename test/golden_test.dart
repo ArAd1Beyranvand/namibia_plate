@@ -22,12 +22,37 @@ void main() {
 
   final cases = <(String, PlateSpec, PlateTheme, String)>[
     ('windhoek', NamibiaPlates.windhoek, NamibiaThemes.standard, '108|053|W'),
-    ('six_two', NamibiaPlates.sixTwoLetter, NamibiaThemes.standard, '123|456|WB'),
+    (
+      'six_two',
+      NamibiaPlates.sixTwoLetter,
+      NamibiaThemes.standard,
+      '123|456|WB',
+    ),
     ('five', NamibiaPlates.fiveDigit, NamibiaThemes.standard, '12181|S'),
-    ('four_two', NamibiaPlates.fourDigitTwoLetter, NamibiaThemes.standard, '1234|KM'),
-    ('personalised_6', NamibiaPlates.personalisedSix, NamibiaThemes.personalised, 'OSAMA1'),
-    ('personalised_7', NamibiaPlates.personalisedSeven, NamibiaThemes.personalised, 'NAMIB24'),
-    ('diplomatic', NamibiaPlates.diplomatic, NamibiaThemes.diplomatic, '013|02'),
+    (
+      'four_two',
+      NamibiaPlates.fourDigitTwoLetter,
+      NamibiaThemes.standard,
+      '1234|KM',
+    ),
+    (
+      'personalised_6',
+      NamibiaPlates.personalisedSix,
+      NamibiaThemes.personalised,
+      'OSAMA1',
+    ),
+    (
+      'personalised_7',
+      NamibiaPlates.personalisedSeven,
+      NamibiaThemes.personalised,
+      'NAMIB24',
+    ),
+    (
+      'diplomatic',
+      NamibiaPlates.diplomatic,
+      NamibiaThemes.diplomatic,
+      '013|02',
+    ),
     ('grn', NamibiaPlates.grn, NamibiaThemes.government, '32872'),
     ('police', NamibiaPlates.police, NamibiaThemes.government, '8006'),
     ('nam1', NamibiaPlates.nam1, NamibiaThemes.government, '0001'),
@@ -58,7 +83,10 @@ void main() {
         ),
       );
       await tester.pumpAndSettle();
-      await expectLater(find.byType(PlateView), matchesGoldenFile('goldens/$name.png'));
+      await expectLater(
+        find.byType(PlateView),
+        matchesGoldenFile('goldens/$name.png'),
+      );
       await tester.pumpWidget(const SizedBox.shrink());
       controller.dispose();
     });
