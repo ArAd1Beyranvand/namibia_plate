@@ -1,10 +1,10 @@
 import 'dart:io';
 
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:namibia_plate/namibia_plate.dart';
 import 'package:plate_core/plate_core.dart';
+import 'package:plate_core/testing.dart';
 
 /// One golden per design, rendered with a real bold face so the ink can be
 /// measured against the article's photographs.
@@ -65,30 +65,15 @@ void main() {
   for (final (name, spec, theme, values) in cases) {
     testWidgets(name, (tester) async {
       final controller = PlateController.fromValues(spec, v(values));
-      await tester.pumpWidget(
-        MaterialApp(
-          home: Scaffold(
-            body: Center(
-              child: SizedBox(
-                width: 520,
-                height: 520 * spec.canvasHeight / spec.canvasWidth,
-                child: PlateView(
-                  controller: controller,
-                  theme: theme,
-                  country: NamibiaCountry.namibia,
-                ),
-              ),
-            ),
-          ),
-        ),
+      await pumpPlateGolden(
+        tester,
+        controller,
+        'goldens/$name.png',
+        theme: theme,
+        scoped: false,
+        country: NamibiaCountry.namibia,
+        stage: Size(520, 520 * spec.canvasHeight / spec.canvasWidth),
       );
-      await tester.pumpAndSettle();
-      await expectLater(
-        find.byType(PlateView),
-        matchesGoldenFile('goldens/$name.png'),
-      );
-      await tester.pumpWidget(const SizedBox.shrink());
-      controller.dispose();
     });
   }
 }

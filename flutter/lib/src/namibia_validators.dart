@@ -20,16 +20,10 @@ abstract final class NamibiaTowns {
   static String? name(String code) => all[code];
 }
 
-// TODO(py): [D4-code] hand-port; reason strings are the contract, keep them byte-identical.
-// TODO(ts): [D4-code] hand-port; reason strings are the contract, keep them byte-identical.
-// TODO(kt): [D4-code] hand-port; reason strings are the contract, keep them byte-identical.
 /// A standard plate: every slot filled and the town code on the list.
 /// Gated on the town code, which is typed last.
 class NamibiaPlateValidator extends GatedPlateValidator {
-  const NamibiaPlateValidator();
-
-  @override
-  String get gateGroup => 'region';
+  const NamibiaPlateValidator() : super('region');
 
   @override
   PlateValidation judge(PlateEntry entry) {

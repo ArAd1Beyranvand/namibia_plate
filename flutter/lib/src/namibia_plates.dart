@@ -15,14 +15,10 @@ import 'namibia_regions.dart';
 /// ~0.53 of the box, so matching would need a ~145 box; the rows fill the
 /// plate (106) and the ink comes out at ~75% of the reference.
 abstract final class _Layout {
-  static const double width = 520;
-  static const double height = 110;
-  static const double rowTop = 2;
-  static const double rowHeight = 106;
+  static const double width = 520, height = 110, rowTop = 2, rowHeight = 106;
 
   /// Standard: `N` ink 16.2..57.6, centre 36.9 (`N 108-053 W`).
-  static const double nationCentre = 37;
-  static const double cell = 56;
+  static const double nationCentre = 37, cell = 56;
 
   /// Standard region letter centre: `W` 479.7, `S` 461.6 (lower-res photo);
   /// the sharper one is used. Two letters stack leftwards on [regionCell].
@@ -44,9 +40,7 @@ abstract final class _Layout {
   static const double dashGap = 30;
 
   /// Personalised (`OSAMA1`): ink 10.0..334.8, centres 30.5..315.2, pitch 57.
-  static const double personalLeft = 2;
-  static const double personalPitch = 57;
-  static const double personalRight = 344;
+  static const double personalLeft = 2, personalPitch = 57, personalRight = 344;
 
   /// Personalised flag ink x 339.5..381.9, y 40.7..66.7.
   static const PlatePanel flag = PlatePanel(
@@ -57,8 +51,7 @@ abstract final class _Layout {
   /// Personalised `NA`: centres 432.8 / 488.4. A label does not shrink to
   /// its box as a slot does, so at the row height `NA` ran off the plate and
   /// outsized the slot glyphs beside it; [naGlyph] brings it back to them.
-  static const double naCentre = 460.6;
-  static const double naGlyph = 88;
+  static const double naCentre = 460.6, naGlyph = 88;
 
   /// Diplomatic `013 CD 02 N`: mission centres 54.3/96.5/138.7 (pitch 42.2);
   /// `CD` 218.2/272.4; serial `0` at 345.4, the `2` read by eye at ~400
@@ -67,9 +60,7 @@ abstract final class _Layout {
   /// The mission register is widened from the measured 42.2 pitch to 50
   /// (centres 55/105/155): at 42 the slots shrank DejaVu's digits well below
   /// the serial's, where the reference prints them the same size.
-  static const double missionLeft = 30;
-  static const double missionRight = 180;
-  static const double cdCentre = 245.3;
+  static const double missionLeft = 30, missionRight = 180, cdCentre = 245.3;
   static const double diplomaticSerialLeft = 317.9;
   static const double diplomaticSerialRight = 427.9;
   static const double diplomaticNationCentre = 466.4;
@@ -84,10 +75,8 @@ abstract final class _Layout {
   /// prefix inks ~156 wide. `NAM1`–`NAM3` are not photographed; at full
   /// height they would run into the digits, so a four-character prefix is
   /// printed at three quarters of it, in the width of three.
-  static const double prefixLeft = 18;
-  static const double prefixAdvance = 52;
-  static const double governmentDigitsRight = 505.5;
-  static const double governmentPitch = 55;
+  static const double prefixLeft = 18, prefixAdvance = 52;
+  static const double governmentDigitsRight = 505.5, governmentPitch = 55;
 
   static const PlatePanel none = PlatePanel(
     box: PlateBox(0, 0, 0, 0),
@@ -126,11 +115,13 @@ abstract final class NamibiaPlates {
     int count,
     double left,
     double right,
-  ) => PlateSlot(
-    alphabet: alphabet,
-    box: PlateBox(left, _Layout.rowTop, right - left, _Layout.rowHeight),
-    length: count,
-    spacing: max(0, (right - left) / count - 0.6 * 0.72 * _Layout.rowHeight),
+  ) => plateRun(
+    alphabet,
+    count,
+    left: left,
+    top: _Layout.rowTop,
+    pitch: (right - left) / count,
+    height: _Layout.rowHeight,
   );
 
   /// Standard yellow plate, `N 123-456 W`: `N`, [digits] (1–6) issued in

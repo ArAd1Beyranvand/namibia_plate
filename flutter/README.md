@@ -6,13 +6,24 @@ GO VEGAN 🌱
 
 From the mighty people of Iran to the resilient people of Namibia to view examples:
 
-https://platexample.ir/#/discover/namibia
+https://platexample.ir/#/discover/namibia:flutter
 
 # namibia_plate
 
-Namibia's licence plates for the `plate_core` library: the yellow standard series in every digit count and town-code length, personalised, diplomatic and government plates.
+Namibia's licence plates for the plate_core library — the yellow standard series, personalised, diplomatic and government plates.
 
-## Install
+## Languages
+
+| Language | Folder | Example |
+| --- | --- | --- |
+| Flutter / Dart | [`flutter/`](https://github.com/ArAd1Beyranvand/namibia_plate/tree/main/flutter) | [platexample](https://platexample.ir/#/discover/namibia:flutter) |
+| Kotlin | [`kotlin/`](https://github.com/ArAd1Beyranvand/namibia_plate/tree/main/kotlin) | [platexample](https://platexample.ir/#/discover/namibia:kotlin) |
+| Python | [`python/`](https://github.com/ArAd1Beyranvand/namibia_plate/tree/main/python) | [platexample](https://platexample.ir/#/discover/namibia:python) |
+| TypeScript | [`typescript/`](https://github.com/ArAd1Beyranvand/namibia_plate/tree/main/typescript) | [platexample](https://platexample.ir/#/discover/namibia:typescript) |
+
+## Quick start
+
+### Install
 
 ```yaml
 dependencies:
@@ -20,7 +31,7 @@ dependencies:
   namibia_plate: ^0.1.0
 ```
 
-## Use
+### Use
 
 ```dart
 import 'package:plate_core/plate_core.dart';
@@ -35,13 +46,39 @@ PlateCanvas(
 );
 ```
 
-## Contains
+## Specs
 
-- `NamibiaCountry` — country panel: `namibia`.
-- `NamibiaPlates` — 13 plate specs: `diplomatic`, `windhoek`, `sixTwoLetter`, `fiveDigit`, `fourDigitTwoLetter`, `personalisedSix`, `personalisedSeven`, `grn`, `police`, `nam1`, `standard()`, `personalised()`, `government()`.
-- `NamibiaThemes` — 4 themes: `standard`, `personalised`, `diplomatic`, `government`.
-- `NamibiaPlateValidator` — advisory validator; flags the frame, never blocks a keystroke.
-- `NamibiaCompleteValidator` — advisory validator; flags the frame, never blocks a keystroke.
+Each spec is one plate layout.
+
+- `NamibiaPlates.standard`(…)
+- `NamibiaPlates.personalised`(…)
+- `NamibiaPlates.diplomatic` — id `na.diplomatic`
+- `NamibiaPlates.government`(…)
+- `NamibiaPlates.windhoek`
+- `NamibiaPlates.sixTwoLetter`
+- `NamibiaPlates.fiveDigit`
+- `NamibiaPlates.fourDigitTwoLetter`
+- `NamibiaPlates.personalisedSix`
+- `NamibiaPlates.personalisedSeven`
+- `NamibiaPlates.grn`
+- `NamibiaPlates.police`
+- `NamibiaPlates.nam1`
+
+## Themes
+
+- `NamibiaThemes.standard`
+- `NamibiaThemes.personalised`
+- `NamibiaThemes.diplomatic`
+- `NamibiaThemes.government`
+
+## Change it
+
+`PlateCanvas` takes `spec:` (an entry of `NamibiaPlates`) and `theme:` (an entry of `NamibiaThemes`). Set `validator:` to `NamibiaTowns()` and `autoValidate: true` to show validation hints.
+
+## Also included
+
+- `NamibiaCountry` — the country panel.
+- `NamibiaTowns` — the plate validator.
 - `NamibiaRegions` — code table.
 
 ## Plates
@@ -56,3 +93,6 @@ The presidential seal plate has no number and is not implemented.
 
 Painted by [`plate_core`](https://pub.dev/packages/plate_core); alphabets shared through [`plate_alphabet`](https://pub.dev/packages/plate_alphabet); optional character picker in [`plate_keypad`](https://pub.dev/packages/plate_keypad).
 
+## License
+
+See [LICENSE](https://github.com/ArAd1Beyranvand/namibia_plate/blob/main/LICENSE).

@@ -8,8 +8,7 @@ abstract final class NamibiaThemes {
   /// Frame ~4.5% of the height (outer plate edge to field, off the standard
   /// and government photographs); corners ~8%, estimated by eye from the
   /// same photographs — too small and too blurred to measure.
-  static const double _border = 0.045;
-  static const double _radius = 0.08;
+  static const double _border = 0.045, _radius = 0.08;
 
   static PlateTheme _mono(
     Color field,

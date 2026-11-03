@@ -43,7 +43,6 @@ abstract final class NamibiaCountry {
 
   static const PlateCountry namibia = PlateCountry(
     code: 'na',
-    captionLines: <String>[],
     panelColor: NamibiaColors.white,
     panelTextColor: NamibiaColors.blue,
     flagAspectRatio: 1.5,
